@@ -2,12 +2,11 @@
 using namespace std;
 int main(){
 	int test; cin >> test;
+	unsigned int arr[256];
 	while(test--){
+		for(int i=0;i<256;i++) arr[i]=0;
 		int k; 
 		cin >> k;
-		int arr[128]; 
-		for(int i=0;i<128;i++) 
-			arr[i]=0;
 		char c; 
 		int value;
 		while(k--){
