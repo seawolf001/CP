@@ -2,6 +2,7 @@
 #define CHARS 260
 #define endl "\n"
 using namespace std;
+
 char s1[105], s2[105], st[105], p[105];
 int n=0, m=0;
 
