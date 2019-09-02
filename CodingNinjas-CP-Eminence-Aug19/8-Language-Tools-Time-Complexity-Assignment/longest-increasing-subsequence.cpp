@@ -11,12 +11,31 @@ using namespace std;
 #define DEBUG(x) cerr << #x << " is " << (x) << endl;
 
 vector<int>longestSubsequence(int *arr, int n){
-    map<int> m;
-    for(int i=0;i<n;i++){
-        m[arr[i]]++;
+    // sort(arr, arr+n);
+    unordered_map<int,int> mp;
+    int dp[n];
+    memset(dp, 0, sizeof(dp));
+    int maximum = INT_MIN;
+    int index=-1;
+    for (int i=0;i<n;i++){
+        if(mp.find(arr[i]-1)!=mp.end()) {
+            int l = mp[arr[i]-1]-1;
+            dp[i] = 1+dp[l];
+        } else {
+            dp[i]=1;
+        }
+        mp[arr[i]] = i+1;
+        if (maximum < dp[i]) {
+            maximum = dp[i];
+            index = i;
+        }
     }
-    int num=0,s=0;
-
+    vector<int> ans;
+    for(int curr=arr[index]-maximum+1;
+            curr<=arr[index]; curr++) {
+        ans.push_back(curr);
+    }
+    return ans;
 }
 typedef long long ll;
 typedef long double ld;
