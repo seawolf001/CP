@@ -27,7 +27,7 @@ int main() {
         if (i >= arr[i]) {
             t=0;
         } else {
-            int x = abs(arr[i]-i);
+            int x = arr[i]-i;
             if (x % n == 0) {
                 t = x/n;
             } else {
