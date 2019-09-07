@@ -22,8 +22,8 @@ bool check(ll k, ll n) {
         x = min(n,k);
         c+=x; n-=x; n-=n/10;
     }
-    if(c<N/2) return false;
-    return true;
+    if(2*c>=N) return true;
+    return false;
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -34,7 +34,7 @@ int main() {
     while(r>=l) {
         k=(l+r)/2;
         if(check(k,n)) {
-            smallest = min(smallest,k);
+            smallest = k;
             r=k-1;
         } else {
             l=k+1;
