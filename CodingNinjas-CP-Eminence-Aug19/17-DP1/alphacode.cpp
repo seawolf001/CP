@@ -25,6 +25,26 @@ ll decryption_count(string s, int n, ll* output) {
     output[n] = x;
     return x;
 }
+
+ll decryption_count_itr(string s, int n, ll* output) {
+    if(n==0 || n==1) { return 1; }
+    output[0] = 1; output[1] = 1;
+    for(int i=2; i<=n; i++) {
+        ll x=0;
+        if(s[i-1]!='0') {
+            x = output[i-1] % MOD;
+        }
+        if(((s[i-2]-'0')*10+(s[i-1]-'0')) <= 26) {
+            if(s[i-2]!='0') {
+                x += output[i-2] % MOD;
+            }
+        }
+        x = x % MOD;
+        output[i] = x;
+    }
+    return output[n];
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     /* Start writing from here */
@@ -34,7 +54,7 @@ int main() {
         int n=s.size();
         ll* output = new ll[n+1];
         for(int i=0;i<=n;i++) { output[i]=0; }
-        cout << decryption_count(s,n, output) << endl;
+        cout << decryption_count_itr(s, n, output) << endl;
         delete[] output;
     }
     return 0;
