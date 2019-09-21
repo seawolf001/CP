@@ -41,8 +41,6 @@ bool dfs(char board[][MAXN], int sx, int sy, int x, int y, unordered_map<string,
         } else if(vis[nx][ny] && nx==sx && ny==sy) {
             if(pathLen(mp, x, y)>=4)
                 return true;
-        } else {
-            continue;
         }
     }
     return false;
