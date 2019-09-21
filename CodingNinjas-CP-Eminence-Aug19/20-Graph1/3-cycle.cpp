@@ -11,38 +11,54 @@ typedef std::vector<ll> vll;
 typedef std::vector<int> vi;
 typedef std::vector<string> vs;
 
-void dfs(vector<int> adj[], bool * vis, int n, int v, int s, int &count) {
-    if(n==0) {
-        if(find(adj[v].begin(), adj[v].end(), s) != adj[v].end())
-            count++;
+void DFS(vector<int> g[], bool* vis, int N, int v, int s, int &count) {
+    if(N==0) {
+        bool cycle = find( g[v].begin(), g[v].end(), s ) != g[v].end();
+        if(cycle) { count++; }
         return;
     }
     vis[v]=true;
-    for(auto it=adj[v].begin(); it!=adj[v].end(); it++) {
-        if(!vis[*it]) {
-            dfs(adj, vis, n-1, *it, s, count);
-        }
+    for(auto it=g[v].begin(); it!=g[v].end(); it++){
+        if(!vis[*it]) DFS(g, vis, N-1, *it, s, count);
     }
     vis[v]=false;
 }
 
-int findCycles(vector<int> adj[], int c, int n, int m) {
+int count_cyles(vector<int> g[], int n, int N) {
     bool * vis = new bool[n];
-    memset(vis, false, sizeof(vis));
+    memset (vis, false, sizeof vis);
     int count=0;
-    for(int i=0;i<(n-(c-1)); i++) {
-        dfs(adj, vis, 3-1, i, i, count);
+    for(int i=0;i<n-(N-1);i++) {
+        DFS(g, vis, N-1, i, i, count);
         vis[i]=true;
     }
-    return count;
+    delete[] vis;
+    return count/2;
 }
 
-int solve(int n,int m,vector<int>u,vector<int>v)
-{
-    vector<int> adj[n];
+int solve(int n,int m,vector<int>u,vector<int>v) {
+    vector<int> g[n]; int N=3;
+    int x,y;
     for(int i=0;i<m;i++) {
-        adj[u[i]].push_back(v[i]);
-        adj[v[i]].push_back(u[i]);
+        x = u[i]-1;
+        y = v[i]-1;
+        g[x].push_back(y);
+        g[y].push_back(x);
     }
-    return findCycles(adj, 3, n, m);
+    return count_cyles(g,n,N);
 }
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    /* Start writing from here */
+    int n,m,x;
+    cin>>n>>m;
+    vector<int> u,v;
+    for(int i=0;i<m;i++) { cin>>x; u.push_back(x); }
+    for(int i=0;i<m;i++) { cin>>x; v.push_back(x); }
+    cout << solve(n,m,u,v) << endl;
+    return 0;
+}
+
+
