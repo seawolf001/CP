@@ -1,0 +1,6 @@
+
+
+1. n >> i stands for n/(2^i);
+2. n << i stands for n * 2^i;
+
+3.
