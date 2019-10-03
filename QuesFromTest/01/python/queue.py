@@ -27,13 +27,22 @@ class Queue(object):
         Dequeue an element if the queue is not empty. Raise exception otherwise.
         '''
         try:
+            '''
+            Acquire the lock if `unlocked` else wait for it to get unlocked and then acquire it.
+            '''
             self.lock.acquire()
             front = None
             if self.empty():
                 raise Exception('\nCan not dequeue from an empty queue.')
             front = self.elements.pop(0)
+            '''
+            Release the acquired lock
+            '''
             self.lock.release()
         except Exception as exc:
+            '''
+            Can not hold on to the lock. Release it.
+            '''
             self.lock.release()
             raise exc
         return front
@@ -48,8 +57,9 @@ class Queue(object):
         '''
         Print the queue
         '''
-        print ('\nCurrently, Following are the elements in the queue : ')
-        print (self.elements)
+        print ('\nCurrently, Following are the elements in the queue : ', end='')
+        List = self.elements
+        print (*List)
 
 if __name__ == '__main__':
     queue = Queue()
@@ -71,9 +81,8 @@ if __name__ == '__main__':
             elif choice == '4':
                 break
             else:
-                print ('Invalid choice. Please opt for a valid one. Ex: 1 or 2 or ....\n')
+                print ('Invalid choice. Please opt for a valid one. Ex: 1 or 2 or 3 or 4')
             if not queue.empty():
                 queue.printQueue()
         except Exception as exc:
             print (exc)
-
