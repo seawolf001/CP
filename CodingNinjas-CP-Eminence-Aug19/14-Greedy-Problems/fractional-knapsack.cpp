@@ -5,11 +5,6 @@ using namespace std;
 #define INF LLONG_MAX/4
 #define MOD 1000000007
 #define DEBUG(x) cerr << #x << " is " << (x) << endl;
-typedef long long ll;
-typedef long double ld;
-typedef std::vector<ll> vll;
-typedef std::vector<int> vi;
-typedef std::vector<string> vs;
 
 struct Worker {
     int time=0;
@@ -19,30 +14,33 @@ struct Worker {
 
 bool comparator(const Worker x, const Worker y) {
     if(x.time == y.time) {
-        double a = (double)(x.speed / x.cost);
-        double b = (double)(y.speed / y.cost);
-        if (a == b) {
+        if(x.speed == y.speed) {
             return x.cost < y.cost;
         } else {
-            return a > b;
+            return x.speed > y.speed;
         }
     } else {
         return x.time < y.time;
     }
 }
 
-double fractional_knapsack(Worker * arr, int n, int d) {
+long long fractional_knapsack(Worker * arr, int n, int d) {
     sort(arr, arr+n, comparator);
-    long long currArea = 0;
+    long long currArea = 0, totalArea = 0;
     long long mincost = 0;
-    int speed = 0 ;
-    int time = 0;
+    int bestSpeed = 0 ;
+    int lastTime = arr[0].time;
     for (int i=0;i<n;i++) {
-        if (currArea + arr[i].speed * arr[i].time <= d) {
+        currArea = bestSpeed * 1LL * (arr[i].time - lastTime);
+        totalArea += currArea;
+        if(totalArea >= d) { break; }
+        if(arr[i].speed > bestSpeed){
+            bestSpeed = arr[i].speed;
             mincost += arr[i].cost;
-            currArea += arr[i].speed * arr[i].time;
         }
+        lastTime = arr[i].time;
     }
+    return mincost;
 }
 
 int main() {
