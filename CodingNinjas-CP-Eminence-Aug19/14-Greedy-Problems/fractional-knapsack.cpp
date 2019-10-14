@@ -25,19 +25,22 @@ bool comparator(const Worker x, const Worker y) {
 }
 
 long long fractional_knapsack(Worker * arr, int n, int d) {
+    /* sort the input array based on the above comparator*/
     sort(arr, arr+n, comparator);
     long long currArea = 0, totalArea = 0;
     long long mincost = 0;
     int bestSpeed = 0 ;
     int lastTime = arr[0].time;
-    for (int i=0;i<n;i++) {
+    for (int i=1;i<n;i++) {
         currArea = bestSpeed * 1LL * (arr[i].time - lastTime);
-        totalArea += currArea;
-        if(totalArea >= d) { break; }
-        if(arr[i].speed > bestSpeed){
-            bestSpeed = arr[i].speed;
-            mincost += arr[i].cost;
+        if (totalArea + currArea <= d) {
+            totalArea += currArea;
+            if(arr[i].speed > bestSpeed){
+                bestSpeed = arr[i].speed;
+                mincost += arr[i].cost;
+            }
         }
+        if (totalArea >= d) { break; }
         lastTime = arr[i].time;
     }
     return mincost;
