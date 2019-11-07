@@ -1,0 +1,102 @@
+arr1 = [3, 4, 5, 1, 2]
+
+arr2 = [4, 5, 1, 2, 3]
+
+
+In arr2, index1 = 2. 
+3,4,5,1,2
+2,3,4,5,1
+1,2,3,4,5
+Time complexity for this rotation : O(n)
+
+arr1 is rotated or not?
+
+# sorted(arr) ? Does this return True or False
+
+
+def binarySearch(arr, n):
+    left = 0
+    right = n-1
+    index = -1
+    while(left<right):
+        mid = (left+right)/2
+        if mid > 0 and (arr[mid] > arr[mid-1]):
+            left = mid
+        else:
+            index = right
+            break
+    if index == -1:
+        return True, -1
+    return False, index
+            
+    # Implmenting this.
+    
+is_sorted, index = binarySearch(arr, len(n))
+if is_sorted :
+    print ('The array already was sorted')
+else:
+    # print the array
+
+
+
+# Q2
+"{{()[[))"
+"{{([])}}"
+"{}()[]"
+
+# is valid? what about this "{(})" -> not valid
+# "{()}" -> is valid
+
+# Using stack to solve this.
+#stack = [], 
+# validating this --> "{{([])}}"
+#Push, {, 
+
+def getChar(c, c2):
+    if c == '{' and c2 == '}':
+        return True
+    if c == '(' and c2 == ')':
+        return True
+    if c == '[' and c2 == ']':
+        return True
+    return False
+
+def validatePattern(pattern):
+    stack = []
+    for c in pattern:
+        if len(stack)==0:
+            stack.append(c)
+        else:
+            c1 = stack[len(stack)-1]
+            if getChar(c1, c):
+                stack.pop()
+            else:
+                stack.append(c)
+    if len(stack)==0:
+           # Valid pattern
+        return True
+    # Not valid
+    return False
+
+
+    1
+   / \ 
+  3   2
+ /     \
+4       6
+ \
+  5
+
+print - > 1, 3, 2, 4, 6, 5
+
+
+
+Input stream
+1, 2, 3, 5, 9, 19, 23, 6, 12, 10 ......
+
+find out the 5th largest number at any given time?
+
+2, 3, 4, 5, 9, and then comes 1
+
+
+

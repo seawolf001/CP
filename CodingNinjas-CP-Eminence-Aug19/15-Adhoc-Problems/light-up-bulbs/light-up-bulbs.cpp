@@ -6,23 +6,16 @@ using namespace std;
 #define MOD 1000000007
 #define DEBUG(x) cerr << #x << " is " << (x) << endl;
 
-int solve(int n, vector<int> arr) {
-    sort(arr,begin(), arr.end());
-    //TODO
-}
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     /* Start writing from here */
-    int n; cin>>n;
-    vector<int> arr;
-    for(int i=0;i<n;i++) {
-        int x; cin >> x;
-        arr.push_back(x);
+    int n,x,y; cin >> n >> x >> y;
+    string s; cin >> s;
+    long groups = s[0] == '0' ? 1 : 0;
+    for(int i=1;i<n;i++) {
+        if (s[i-1]=='1' && s[i]=='0') groups++;
     }
-    cout << solve(n, arr) << endl;
+    cout << ((groups-1)*min(x,y)+y) << endl;
     return 0;
 }
-
-
