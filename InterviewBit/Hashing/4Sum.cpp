@@ -1,7 +1,7 @@
 vector<vector<int> > Solution::fourSum(vector<int> &arr, int sum) {
-    
+
 //   unordered_map<int, pair<int,int>> hash;
-//   unordered_map<int, pair<int,int>>::iterator it; 
+//   unordered_map<int, pair<int,int>>::iterator it;
    int n =arr.size();
    sort(arr.begin(), arr.end());
    vector<vector<int>> res;

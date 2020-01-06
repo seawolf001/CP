@@ -25,7 +25,7 @@ int getMin(int * arr, int n) {
     //             // }
     //         }
     //     }
-    }
+    // }
     for (int i=0;i<n;i++) cout << dp[i] << " "; cout << endl;
     int ans = 0;
     ans = accumulate(dp, dp+n, ans);
