@@ -14,6 +14,7 @@ typedef std::vector<string> vs;
 const string codingninjas="CODINGNINJA";
 const int X[] = {-1,-1,0,1,1,1,0,-1};
 const int Y[] = {0,-1,-1,-1,0,1,1,1};
+const int MAXN=100;
 
 bool dfs(char arr[][MAXN], int n, int m, int c, int x, int y, bool ** vis) {
     if(c==codingninjas.length()-1)
@@ -62,7 +63,7 @@ int main() {
     /* Start writing from here */
     int n,m;
     cin>>n>>m;
-    char arr[n][maxM];
+    char arr[n][MAXN];
     char c; string s;
     for(int i=0;i<n;i++) {
         cin>>s;
