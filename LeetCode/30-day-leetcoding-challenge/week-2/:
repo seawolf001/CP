@@ -1,8 +1,0 @@
-from typing import List
-
-class Solution:
-    def findMaxLength(self, nums: List[int]) -> int:
-        nums = [1 if x==1 else -1 for x in nums]
-        print(nums)
-
-print(Solution().findMaxLength([0,1,0,1,1,1,0,0]))
