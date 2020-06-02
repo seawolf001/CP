@@ -6,5 +6,3 @@ This repository contains my solutions to competitive programming questions from 
 * HackerRank: https://github.com/jitendrakr88/CP/tree/master/Hackerrank
 * Interviewbit: https://github.com/jitendrakr88/CP/tree/master/InterviewBit
 * UVA: https://github.com/jitendrakr88/CP/tree/master/2CP3-UVA
-
-UVA, Hackerrank, HackeEarth, InterviewBit, CodingNinjas etc, which I solve while learning.
