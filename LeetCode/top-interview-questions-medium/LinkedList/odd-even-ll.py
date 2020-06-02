@@ -7,4 +7,14 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: ListNode) -> ListNode:
-        pass
+        c, curr = 1, head
+        even_head = head.next
+        while curr:
+            next = curr.next
+            if next:
+                curr.next = next.next
+                curr = next
+            else:
+                curr.next = even_head
+                break
+        return head
