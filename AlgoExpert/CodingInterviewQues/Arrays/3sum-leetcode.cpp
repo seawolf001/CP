@@ -6,11 +6,16 @@ using namespace std;
 #define MOD 1e9+7
 #define DEBUG(x) cerr << #x << " is " << (x) << endl;
 
+/*
+ * Method 1: Use 3 loops and check for every triplet: O(n^3) Time | O(1) Space
+ * Method 2: Sort the array, Fix 1 number and then use 2-pointer technique for other 2 numbers. O(n^2)
+ * */
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         vector<vector<int>> triplets;
-        sort(nums.begin(), nums.end());
+        sort(nums.begin(), nums.end()); // O(nlogn)
         int n = nums.size();
         for(int i=0;i<n-2;) {
             int j=i+1, k=n-1;
