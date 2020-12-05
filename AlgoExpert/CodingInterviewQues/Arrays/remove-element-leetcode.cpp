@@ -1,4 +1,5 @@
 /* Jitendra Kumar */
+// https://leetcode.com/problems/remove-element/
 #include<bits/stdc++.h>
 using namespace std;
 #define endl '\n'
