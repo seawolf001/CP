@@ -21,7 +21,7 @@ class Trie(object):
         """"""
         self.__root = Node()
 
-    def get_root(self):
+    def __get_root(self):
         """"""
         return self.__root
 
@@ -29,7 +29,7 @@ class Trie(object):
         """"""
         if not s:
             return 0
-        current = self.get_root()
+        current = self.__get_root()
         for char in s:
             if not current:
                 return 0
@@ -40,7 +40,7 @@ class Trie(object):
         """"""
         if not s:
             raise RuntimeError("Empty String")
-        current = self.get_root()
+        current = self.__get_root()
         for char in s:
             if not current.next(char):
                 current.add_child(char)
@@ -51,7 +51,7 @@ class Trie(object):
     def delete(self, s):
         if not s:
             raise RuntimeError("Empty String")
-        current = self.get_root()
+        current = self.__get_root()
         for char in s:
             if not current:
                 raise RuntimeError('String %s does not exist in the trie.' % s)
@@ -76,7 +76,38 @@ class TrieTests(unittest.TestCase):
         trie = Trie()
         self.assertRaises(RuntimeError, trie.insert, "")
 
-    # Add more tests
+    def test02(self):
+        trie = Trie()
+        s = "abc"
+        trie.insert(s)
+        self.assertEquals(trie.query(s), 1)
+        trie.insert(s)
+        self.assertEquals(trie.query(s), 2)
+
+        trie.delete(s)
+        self.assertEquals(trie.query(s), 1)
+        trie.delete(s)
+        self.assertEquals(trie.query(s), 0)
+
+    def test03(self):
+        """"""
+        trie = Trie()
+        self.assertRaises(RuntimeError, trie.delete, "")
+
+    def test04(self):
+        """"""
+        trie = Trie()
+        s = "abc"
+        self.assertRaises(RuntimeError, trie.delete, "random")
+        trie.insert(s)
+        trie.insert(s)
+        self.assertEquals(trie.query(s), 2)
+        trie.delete(s)
+        self.assertEquals(trie.query(s), 1)
+        trie.delete(s)
+        self.assertRaises(RuntimeError, trie.delete, s)
+
+    # TODO Add more tests
 
 if __name__ == '__main__':
     unittest.main()
