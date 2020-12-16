@@ -1,5 +1,5 @@
 /* Jitendra Kumar */
-https://leetcode.com/problems/longest-palindromic-substring/
+//https://leetcode.com/problems/longest-palindromic-substring/
 #include<bits/stdc++.h>
 using namespace std;
 #define endl '\n'
