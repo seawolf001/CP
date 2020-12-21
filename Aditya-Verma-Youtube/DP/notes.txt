@@ -1,0 +1,20 @@
+
+Identifying DP problems:
+    1) Optimal solution
+    2) Choices.
+
+Knapsack problems:
+    1) 0-1 knapsack
+    2) Fractional knapsack
+    3) unbounded knapsack
+
+-- choice diagram, recursion
+-- Base condition --> smallest valid input
+
+-- Recursion + memoization ===> Only con as compared to buttom-up is, the call-stack size.
+-- Bottom-up methodology =====> Iterative version instead of recursive
+
+
+
+
+
