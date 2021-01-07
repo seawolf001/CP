@@ -16,7 +16,7 @@ public:
         if((S+D) & 1) return 0;
         int T = (S+D)/2;
         // count subsets whose sum is (S+D)/2 == T
-        vector<long> dp(T+1, 0);
+        vector<int> dp(T+1, 0);
         dp[0] = 1;
         for(int &x: nums) {
             for(int t=T; t>=x; t--) {
