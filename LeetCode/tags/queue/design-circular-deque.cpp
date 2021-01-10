@@ -14,23 +14,20 @@ public:
     /** Initialize your data structure here. Set the size of the deque to be k. */
     MyCircularDeque(int k) {
         dq.clear();
-        size=0;
         MAX=k;
     }
 
     /** Adds an item at the front of Deque. Return true if the operation is successful. */
     bool insertFront(int value) {
-        if(size==MAX) return false;
+        if(isFull()) return false;
         dq.push_front(value);
-        size++;
         return true;
     }
 
     /** Adds an item at the rear of Deque. Return true if the operation is successful. */
     bool insertLast(int value) {
-        if(size==MAX) return false;
+        if(isFull()) return false;
         dq.push_back(value);
-        size++;
         return true;
     }
 
@@ -38,7 +35,6 @@ public:
     bool deleteFront() {
         if(isEmpty()) return false;
         dq.pop_front();
-        size--;
         return true;
     }
 
@@ -46,7 +42,6 @@ public:
     bool deleteLast() {
         if(isEmpty()) return false;
         dq.pop_back();
-        size--;
         return true;
     }
 
@@ -64,12 +59,12 @@ public:
 
     /** Checks whether the circular deque is empty or not. */
     bool isEmpty() {
-        return size==0;
+        return dq.size()==0;
     }
 
     /** Checks whether the circular deque is full or not. */
     bool isFull() {
-        return size==MAX;
+        return dq.size()==MAX;
     }
 };
 
@@ -85,5 +80,7 @@ public:
  * bool param_7 = obj->isEmpty();
  * bool param_8 = obj->isFull();
  */
+
+
 
 
