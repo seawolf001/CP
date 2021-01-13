@@ -11,40 +11,21 @@ public:
             if(s[i]=='(') {
                 st.push(s[i++]);
             } else {
+                // if st.empty()!=false ==> insert another ')' and pop '(' matching to '))'
+                // else have ), add () to make it ())
                 int c=0;
-                while(s[i]==')') {
-                    ++c; ++i;
+                while(s[i]==')') { ++c; ++i; }
+                while(c>=2) {
+                    c -= 2;
+                    if(!st.empty()) st.pop();
+                    else ans += 1;
                 }
-                if(!st.empty()) {
-                    if(c==1) {
-                        ans +=1; // insert another ')' and pop '(' matching to '))'
-                        st.pop();
-                    } else {
-                        while(!st.empty() && c>=2) {
-                            st.pop();
-                            c-=2;
-                        }
-                        while(c>=2) {
-                            // insert ( for every ))
-                            ans += 1;
-                            c -= 2;
-                        }
-                        if(c==1 && st.empty()) ans += 2; // // have ), add () to make it ())
-                        else if(c==1) { ans +=1; st.pop(); } // insert another ')' and pop '(' matching to '))'
-                    }
-                } else {
-                    while(c>=2) {
-                        // insert ( for every ))
-                        ans += 1;
-                        c -= 2;
-                    }
-                    if(c==1) ans += 2; // have ), add () to make it ())
-                }
+                if(c==1 && !st.empty()) { ans +=1; st.pop(); }
+                else if(c==1 && st.empty()) ans += 2;
             }
         }
         while(!st.empty()) { ans+=2; st.pop(); }
         return ans;
     }
 };
-
 
