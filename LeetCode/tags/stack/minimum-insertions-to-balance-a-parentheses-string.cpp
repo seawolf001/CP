@@ -17,8 +17,7 @@ public:
                 }
                 if(!st.empty()) {
                     if(c==1) {
-                        // insert another ')' and pop '(' matching to '))'
-                        ans +=1;
+                        ans +=1; // insert another ')' and pop '(' matching to '))'
                         st.pop();
                     } else {
                         while(!st.empty() && c>=2) {
@@ -26,14 +25,16 @@ public:
                             c-=2;
                         }
                         while(c>=2) {
+                            // insert ( for every ))
                             ans += 1;
                             c -= 2;
                         }
                         if(c==1 && st.empty()) ans += 2; // // have ), add () to make it ())
-                        else if(c==1) { ans +=1; st.pop();}
+                        else if(c==1) { ans +=1; st.pop(); } // insert another ')' and pop '(' matching to '))'
                     }
                 } else {
                     while(c>=2) {
+                        // insert ( for every ))
                         ans += 1;
                         c -= 2;
                     }
