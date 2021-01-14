@@ -9,9 +9,11 @@ public:
         if(n<2) return prices;
         for(int i=0;i<n;i++) {
             int j = i+1;
-            while(prices[j]>prices[i]) j++;
+            while(j<n && prices[j]>prices[i]) j++;
             if(j<n) prices[i] -= prices[j];
         }
         return prices;
     }
 };
+
+
