@@ -16,22 +16,26 @@ using namespace std;
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-// https://leetcode.com/problems/swap-nodes-in-pairs/discuss/11019/7-8-lines-C%2B%2B-Python-Ruby
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-    ListNode **pp = &head, *a, *b;
-    while ((a = *pp) && (b = a->next)) {
-            a->next = b->next;
-            b->next = a;
-            *pp = b;
-            pp = &(a->next);
-        }
+        if(!head || !head->next) return head;
+        ListNode *curr=head->next, *prev=head, *next=NULL;
+        head=curr;
+        prev->next = swapPairs(curr->next);
+        curr->next = prev;
+
+        // int x=0;
+        // while(curr) {
+        //     next = curr->next;
+        //     prev->next = curr->next;
+        //     curr->next = prev;
+        //     // if(x==0) head=curr, x=1;
+        //     prev = next;
+        //     curr = prev ? prev->next : NULL;
+        // }
         return head;
     }
 };
-
-
 
 
