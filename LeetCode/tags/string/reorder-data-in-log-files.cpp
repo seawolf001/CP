@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool az(int x) { return 97<=x && x<=122; }
+bool AZ(int x) { return 65<=x && x<=90; }
+bool number(int x) { return 48<=x && x<=57; }
+
+class Solution {
+ public:
+     vector<string> reorderLogFiles(vector<string>& logs) {
+         vector<string> digitLogs, letterLogs;
+         for (string &s : logs) {
+             int i = 0;
+             while (s[i] != ' ') ++i;
+             if (isalpha(s[i + 1])) letterLogs.push_back(s.substr(i + 1) + " " + s.substr(0, i));
+             else digitLogs.push_back(s);
+         }
+
+         sort(letterLogs.begin(), letterLogs.end());
+         for (string &s : letterLogs) {
+             int i = s.size() - 1;
+             while (s[i] != ' ') --i;
+             s = s.substr(i + 1) + " " + s.substr(0, i);
+         }
+         for (string &s : digitLogs) letterLogs.push_back(s);
+         return letterLogs;
+     }
+ };
