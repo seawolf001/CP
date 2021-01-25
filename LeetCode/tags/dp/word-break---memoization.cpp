@@ -16,8 +16,9 @@ private:
         for(int i=0;i<=last;i++) {
             string sub = s.substr(i, last-i+1);
             bool valid = find(wordDict.begin(), wordDict.end(), sub) != wordDict.end();
+            if(!valid) continue;
             memoize[i-1] = solver(s, i-1, wordDict);
-            if(valid && memoize[i-1]) return true;
+            if(memoize[i-1]) return true;
         }
         return false;
     }
@@ -27,5 +28,4 @@ public:
         return solver(s, s.size()-1, wordDict);
     }
 };
-
 
