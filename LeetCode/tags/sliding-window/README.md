@@ -1,5 +1,7 @@
 ### Some useful notes, mostly from discussion forum:
 
+* **Sliding Window for Beginners [Problems | Template | Sample Solutions]**
+    * https://leetcode.com/discuss/general-discussion/657507/Sliding-Window-for-Beginners-Problems-or-Template-or-Sample-Solutions
 * **Leetcode: Hard, 76. Minimum Window Substring**
     * https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
 * **Leetcode: Hard, 992. Subarrays with K Different Integers**
