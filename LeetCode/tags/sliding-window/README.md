@@ -1,4 +1,4 @@
-#### A generic pattern [taken from above] which can be followed to implement sliding-windows problems.
+#### A generic pattern [taken from [link](https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems)] which can be followed to implement sliding-windows problems.
 
 ```cpp
     int findSubstring(string s){
