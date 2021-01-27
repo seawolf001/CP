@@ -13,9 +13,7 @@ class Trie {
 private:
     TrieNode* root;
 public:
-    Trie() {
-        root = new TrieNode();
-    }
+    Trie(): root(new TrieNode()){}
     bool deleteItem(string s) {
         int n = s.size();
         if(n==0)
