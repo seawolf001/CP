@@ -34,6 +34,7 @@ public:
     Trie(): root(new TrieNode()){}
 
     bool deleteItem(string s) {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
         if(s.size() == 0)
             return false;
         return deleteRecusively(s, 0, root);
@@ -103,7 +104,7 @@ int main() {
 
     for(string &word: dictionary)
         assert (t.search(word) == true);
-
+    cout << "Words having `Ji` as prefix: ";
     for(string word: t.startsWith("Ji"))
         cout << word << " ";
     cout << endl;
@@ -112,15 +113,8 @@ int main() {
     while(deleted.size() < n/2) {
         int idx = rand() % dictionary.size();
         string deleting = dictionary[idx];
-
         dictionary.erase(find(dictionary.begin(), dictionary.end(), deleting));
-
-        if(t.deleteItem(deleting)){
-            deleted.push_back(deleting);;
-            cout << "Deleted `" << deleting << "` from the dictionary." << endl;
-        } else {
-            cout << "An attempt to delete " << deleting << " failed." << endl;
-        }
+        if(t.deleteItem(deleting)) deleted.push_back(deleting);;
     }
 
     for(string &word: deleted)
