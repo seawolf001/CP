@@ -12,14 +12,14 @@ public:
 class Trie {
 private:
     TrieNode* root;
-    bool deleteRecusively(string &s, int idx, TrieNode* parent) {
+    bool deleteRecursively(string &s, int idx, TrieNode* parent) {
         if(idx == s.size())
             return false;
         auto itr = parent->keys.find(s[idx]);
         if(itr == parent->keys.end())
             return false;
         TrieNode* node = itr->second;
-        deleteRecusively(s, idx+1, node); // delete child or next node
+        deleteRecursively(s, idx+1, node); // delete child or next node
         --node->ref;
         if(node->ref == 0) {
             // delete node with ref count=0, ref=0 implies this node is not used in any other word.
@@ -37,7 +37,7 @@ public:
         transform(s.begin(), s.end(), s.begin(), ::tolower);
         if(s.size() == 0)
             return false;
-        return deleteRecusively(s, 0, root);
+        return deleteRecursively(s, 0, root);
     }
     void insertItem(string s) {
         TrieNode* node = root;
