@@ -23,27 +23,29 @@ public:
     string smallestFromLeaf(TreeNode* root) {
         if(!root) return "";
         string ans = string(8500, 'z'), r="";
+        char c = root->val + 'a';
         queue<pair<TreeNode*, string>> q;
-        q.push(make_pair(root, r + (char)(root->val + 'a')));
+        q.push(make_pair(root, r + c));
         while(!q.empty()) {
             TreeNode* f = q.front().first;
             string word = q.front().second;
             q.pop();
             if(f->left==NULL && f->right==NULL) {
-                reverse(word.begin(), word.end());
-                if(word < ans) ans = word;
+                if(word < ans)
+                    ans = word;
             } else {
                 if(f->left) {
-                    char c = f->left->val + 'a';
-                    q.push(make_pair(f->left, word + c));
+                    c = f->left->val + 'a';
+                    q.push(make_pair(f->left, c + word));
                 }
                 if(f->right) {
-                    char c = f->right->val + 'a';
-                    q.push(make_pair(f->right, word + c));
+                    c = f->right->val + 'a';
+                    q.push(make_pair(f->right, c + word));
                 }
             }
         }
         return ans;
     }
 };
+
 
