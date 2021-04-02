@@ -7,8 +7,6 @@ bool az(int x) { return 97<=x && x<=122; }
 bool AZ(int x) { return 65<=x && x<=90; }
 bool number(int x) { return 48<=x && x<=57; }
 
-// [WIP]
-
 class Solution {
 public:
     vector<vector<string>> partition(string s) {
@@ -29,7 +27,7 @@ public:
             tracker[i][i] = true; // LEN = 1
         for(int i=0;i<n-1;i++)
             tracker[i][i+1] = s[i]==s[i+1] ? true: false; // LEN = 2
-        for(int l=3;l<n;l++) { // LEN >= 3
+        for(int l=3;l<=n;l++) { // LEN >= 3
             for(int st=0;st <= n-l;st++) {
                 int end = st+l-1;
                 tracker[st][end] = s[st]==s[end] && tracker[st+1][end-1] ? true: false;
@@ -56,4 +54,5 @@ public:
         }
     }
 };
+
 
