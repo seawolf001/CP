@@ -21,20 +21,17 @@ bool number(int x) { return 48<=x && x<=57; }
 class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
-        if(!root) return 0;
+        if(!root)  return 0;
         int ans=1, maxs=root->val, l=1;
-        queue<TreeNode*> q;
-        q.push(root);
+        queue<TreeNode*> q; q.push(root);
         while(!q.empty()) {
             int qs = q.size();
             int curr = 0;
             while(qs--) {
                 TreeNode* f = q.front(); q.pop();
                 curr += f->val;
-                if(f->left)
-                    q.push(f->left);
-                if(f->right)
-                    q.push(f->right);
+                if(f->left)  q.push(f->left);
+                if(f->right) q.push(f->right);
             }
             if(curr > maxs) maxs = curr, ans = l;
             ++l;
