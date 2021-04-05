@@ -16,7 +16,8 @@ public:
         for(int x: nums)  s.insert(x);
         for(int x: nums) {
             int y = x+1;
-            while(s.find(y) != s.end()) ++y;
+            while(s.find(x-1) == s.end() && s.find(y) != s.end())
+                ++y;
             ans = max(ans, y-x);
         }
         return ans;
