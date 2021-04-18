@@ -12,9 +12,9 @@ public:
     int maxProfit(vector<int>& prices, int k=2) {
         int n = prices.size();
         vector<vector<int>> dp(k+1, vector<int>(n+1, 0));
-        // dp[i][j]: max profit by making i trasactions upto jth day.
+        // dp[i][j]: max profit by making i transactions upto jth day.
         for(int i=0;i<=k;i++) dp[i][0] = 0; // no profit on day-0
-        for(int j=0;j<=n;j++)  dp[0][j] = 0; // zero trasactions
+        for(int j=0;j<=n;j++)  dp[0][j] = 0; // zero transactions
         for(int i=1; i<=k; i++) {
             for(int j=1; j<n; j++) {
                 int maxx = INT_MIN;
