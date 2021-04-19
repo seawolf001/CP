@@ -12,6 +12,7 @@ public:
     vector<int> searchRange(vector<int>& A, int target) {
         int n=A.size(), i = 0, j = n - 1;
         vector<int> ret(2, -1);
+        if(n==0) return ret;
         // Search for the left one
         while (i < j)
         {
@@ -34,3 +35,5 @@ public:
         return ret;
     }
 };
+
+
