@@ -12,17 +12,23 @@ public:
     vector<int> findAnagrams(string s, string p) {
         int n = s.size(), m = p.size();
         vector<int> ans, sf(26,0), pf(26,0);
+
         if(m > n)
             return ans;
+
         for(int i=0;i<m;i++) {
             pf[p[i]-'a']++;
             sf[s[i]-'a']++;
         }
+
         if(sf == pf)
             ans.push_back(0);
+
         for(int i=m;i<n;i++) {
+
             sf[s[i]-'a']++;
             sf[s[i-m]-'a']--;
+
             if(sf==pf)
                 ans.push_back(i-m+1);
         }
