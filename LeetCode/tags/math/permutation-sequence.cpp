@@ -18,7 +18,7 @@ public:
         }
         s += to_string(n);
         string ans = "";
-        --k; // 0-based indexing
+        --k; // Kth nummber will be 0....k-1 th number in permutation sequence
         while(true) {
             int idx = k / fact;
             ans += s[idx];
