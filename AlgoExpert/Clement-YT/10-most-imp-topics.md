@@ -1,0 +1,13 @@
+
+- Logrithms
+- Graph traversals
+    - DFS
+    - BFS
+- Binary Search
+- Sliding Window
+- Recursion
+- Invert a binary tree & Reverse a linkedlist
+- Suffix Trees
+- Heaps
+- DP
+- Sorting Algorithms (Quick & Merge)
