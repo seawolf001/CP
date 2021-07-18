@@ -19,40 +19,33 @@ bool number(int x) { return 48<=x && x<=57; }
 class Solution {
 private:
     unordered_map<TreeNode*, int> dist;
-
     int findTarget(TreeNode* node, TreeNode* target) {
-        if(!node)
-            return -1;
-        if(node == target) {
-            return dist[target] = 0;
-        }
-        int d = 0;
-        d = findTarget(node->left, target);
-        if (d != -1) {
+        if(!node) return -1;
+        if(node == target)
+            return dist[node] = 0;
+        int d = findTarget(node->left, target);
+        if(d != -1)
             return dist[node] = d + 1;
-        }
         d = findTarget(node->right, target);
-        if(d != -1) {
+        if(d != -1)
             return dist[node] = d + 1;
-        }
         return -1;
     }
-    void dfs(TreeNode* node, TreeNode* target, int K, int l, vector<int> &ans) {
+    void dfs(TreeNode* node, int d, int K, vector<int> &ans) {
         if(!node) return;
         if(dist.find(node) != dist.end())
-            l = dist[node];
-        if(l == K) ans.push_back(node->val);
-        dfs(node->left, target, K, l+1, ans);
-        dfs(node->right, target, K, l+1, ans);
+            d = dist[node];
+        if(d == K) ans.push_back(node->val);
+        dfs(node->left, d+1, K, ans);
+        dfs(node->right, d+1, K, ans);
     }
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
         vector<int> ans;
         if(!root) return ans;
         findTarget(root, target);
-        dfs(root, target, K, dist[root], ans);
+        dfs(root, dist[root], K, ans);
         return ans;
     }
 };
-
 
